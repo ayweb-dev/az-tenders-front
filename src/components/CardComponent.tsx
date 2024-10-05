@@ -21,7 +21,7 @@ export const CardComponent = () => {
   useEffect(() => {
     const fetchSubscription = async (token) => {
       const response = await axios.get(
-        "https://api.az-tenders/user/checkSubscription",
+        "https://api.az-tenders.com/user/checkSubscription",
         {
           headers: {
             authorization: `Bearer ${token}`,

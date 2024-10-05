@@ -85,7 +85,7 @@ const AjoutAdmin = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -130,7 +130,7 @@ const AjoutAdmin = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "https://api.az-tenders/admin/new-admin",
+        "https://api.az-tenders.com/admin/new-admin",
         {
           nom: formData.Nom,
           prenom: formData.Prenom,

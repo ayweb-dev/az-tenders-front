@@ -78,7 +78,7 @@ const CompleteProfile = () => {
 
     try {
       const response = await axios.post(
-        "https://api.az-tenders/user/update-profile",
+        "https://api.az-tenders.com/user/update-profile",
         {
           userId,
           tel,

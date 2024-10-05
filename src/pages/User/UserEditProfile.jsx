@@ -115,7 +115,7 @@ const UserEditProfile = () => {
 
       // Envoyer la requête PUT pour mettre à jour les informations de l'utilisateur
       const response = await axios.post(
-        "https://api.az-tenders/admin/update-personal-info",
+        "https://api.az-tenders.com/admin/update-personal-info",
         formData,
         config
       );

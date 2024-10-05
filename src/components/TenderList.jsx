@@ -101,7 +101,7 @@ const TenderList = () => {
   useEffect(() => {
     const fetchSubscription = async (token) => {
       const response = await axios.get(
-        "https://api.az-tenders/user/checkSubscription",
+        "https://api.az-tenders.com/user/checkSubscription",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -128,7 +128,7 @@ const TenderList = () => {
       return new Date(`${year}-${month}-${day}`);
     }
     const fetchTenders = async () => {
-      const response = await axios.get("https://api.az-tenders/admin/tenders");
+      const response = await axios.get("https://api.az-tenders.com/admin/tenders");
 
       const sortedTenders = response.data.tenders.sort((a, b) => {
         const dateA = convertToDate(a.dateDebut);
@@ -144,12 +144,12 @@ const TenderList = () => {
 
     const fetchSectorsAndEntreprises = async () => {
       const sectorsResponse = await axios.get(
-        "https://api.az-tenders/admin/sectors"
+        "https://api.az-tenders.com/admin/sectors"
       );
       setSectors(sectorsResponse.data);
 
       const entreprisesResponse = await axios.get(
-        "https://api.az-tenders/admin/entreprises"
+        "https://api.az-tenders.com/admin/entreprises"
       );
       setEntreprises(entreprisesResponse.data.entreprises);
     };

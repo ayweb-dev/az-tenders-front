@@ -24,7 +24,7 @@ const EditPasswordAdmin = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -88,7 +88,7 @@ const EditPasswordAdmin = () => {
 
       // Requête PUT pour mettre à jour le mot de passe
       const response = await axios.post(
-        `https://api.az-tenders/admin/update-paswd/${admin}`,
+        `https://api.az-tenders.com/admin/update-paswd/${admin}`,
         formData,
         config
       );

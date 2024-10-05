@@ -10,7 +10,7 @@ const FavoriteButton = ({ tenderId }) => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("https://api.az-tenders/admin/user", {
+        const response = await axios.get("https://api.az-tenders.com/admin/user", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -40,7 +40,7 @@ const FavoriteButton = ({ tenderId }) => {
 
       if (isFavorite) {
         // Supprimer des favoris
-        await axios.delete(`https://api.az-tenders/user/favorites/${tenderId}`, {
+        await axios.delete(`https://api.az-tenders.com/user/favorites/${tenderId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -48,7 +48,7 @@ const FavoriteButton = ({ tenderId }) => {
         setIsFavorite(false);
       } else {
         // Ajouter aux favoris
-        await axios.post(`https://api.az-tenders/user/favorites/${tenderId}`, {}, {
+        await axios.post(`https://api.az-tenders.com/user/favorites/${tenderId}`, {}, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -21,7 +21,7 @@ const Tenders = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -62,7 +62,7 @@ const Tenders = () => {
       setIsLoading(true);
       // Faire une requête GET vers votre backend pour récupérer les secteurs
       const token = localStorage.getItem("token");
-      const response = await axios.get("https://api.az-tenders/admin/tenders", {
+      const response = await axios.get("https://api.az-tenders.com/admin/tenders", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -97,7 +97,7 @@ const Tenders = () => {
           // Requête DELETE vers l'API backend
           const token = localStorage.getItem("token"); // Récupération du token d'authentification
           const response = axios.delete(
-            `https://api.az-tenders/admin/tender/${TendersId}`,
+            `https://api.az-tenders.com/admin/tender/${TendersId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

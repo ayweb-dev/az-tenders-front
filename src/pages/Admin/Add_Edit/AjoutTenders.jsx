@@ -90,7 +90,7 @@ const AddTenderForm = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -127,7 +127,7 @@ const AddTenderForm = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/sectors",
+          "https://api.az-tenders.com/admin/sectors",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -187,7 +187,7 @@ const AddTenderForm = () => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        "https://api.az-tenders/admin/tender",
+        "https://api.az-tenders.com/admin/tender",
         formData,
         {
           headers: {

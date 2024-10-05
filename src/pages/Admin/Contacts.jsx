@@ -16,7 +16,7 @@ function Contacts() {
     const checkAccess = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("https://api.az-tenders/admin/admin-access", {
+        const response = await axios.get("https://api.az-tenders.com/admin/admin-access", {
           headers: {
             authorization: `Bearer ${token}`,
           },
@@ -57,7 +57,7 @@ function Contacts() {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await axios.get("https://api.az-tenders/admin/messages",{
+      const response = await axios.get("https://api.az-tenders.com/admin/messages",{
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -77,7 +77,7 @@ function Contacts() {
     try {
       const token = localStorage.getItem("token"); // Récupération du token d'authentification
       const response = await axios.put(
-        `https://api.az-tenders/admin/message/${contactId}`,
+        `https://api.az-tenders.com/admin/message/${contactId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -115,7 +115,7 @@ function Contacts() {
       }).then(async (result) => {
         if (result.isConfirmed) {
           const response = await axios.delete(
-            `https://api.az-tenders/admin/message/${contactId}`,
+            `https://api.az-tenders.com/admin/message/${contactId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

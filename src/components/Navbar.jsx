@@ -76,7 +76,7 @@ const Navbar = () => {
 
     if (result.isConfirmed) {
       try {
-        await axios.post("https://api.az-tenders/auth/logout");
+        await axios.post("https://api.az-tenders.com/auth/logout");
 
         localStorage.removeItem("token");
         setisLogedIn(false);

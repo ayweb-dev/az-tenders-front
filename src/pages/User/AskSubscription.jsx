@@ -22,7 +22,7 @@ const SubscriptionRequest = () => {
     const fetchSectors = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("https://api.az-tenders/admin/sectors",
+        const response = await axios.get("https://api.az-tenders.com/admin/sectors",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -116,7 +116,7 @@ const SubscriptionRequest = () => {
 
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "https://api.az-tenders/user/askSubscription",
+        "https://api.az-tenders.com/user/askSubscription",
         form,
         {
           headers: {

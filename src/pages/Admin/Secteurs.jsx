@@ -21,7 +21,7 @@ const Secteurs = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -62,7 +62,7 @@ const Secteurs = () => {
       setIsLoading(true);
       const token = localStorage.getItem("token");
       // Faire une requête GET vers votre backend pour récupérer les secteurs
-      const response = await axios.get("https://api.az-tenders/admin/sectors", {
+      const response = await axios.get("https://api.az-tenders.com/admin/sectors", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -87,7 +87,7 @@ const Secteurs = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "https://api.az-tenders/admin/sector",
+        "https://api.az-tenders.com/admin/sector",
 
         {
           title: sectorTitle,
@@ -123,7 +123,7 @@ const Secteurs = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.put(
-        `https://api.az-tenders/admin/sector/${currentSectorId}`,
+        `https://api.az-tenders.com/admin/sector/${currentSectorId}`,
         {
           title: newTitle,
         },
@@ -200,7 +200,7 @@ const Secteurs = () => {
         try {
           const token = localStorage.getItem("token"); // Récupération du token d'authentification
           const response = await axios.delete(
-            `https://api.az-tenders/admin/sector/${sectorId}`,
+            `https://api.az-tenders.com/admin/sector/${sectorId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

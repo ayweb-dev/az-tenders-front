@@ -65,7 +65,7 @@ const NavbarUser = () => {
     if (result.isConfirmed) {
       try {
         // Envoyer la requête de déconnexion au serveur
-        await axios.post("https://api.az-tenders/auth/logout");
+        await axios.post("https://api.az-tenders.com/auth/logout");
 
         // Supprimer le token côté client
         localStorage.removeItem("token");

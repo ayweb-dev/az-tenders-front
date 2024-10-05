@@ -15,14 +15,14 @@ export function SignIn() {
   const [recaptchaToken, setRecaptchaToken] = useState("");
 
   const handleGoogleLogin = () => {
-    window.open("https://api.az-tenders/auth/google", "_self");
+    window.open("https://api.az-tenders.com/auth/google", "_self");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://api.az-tenders/auth/login", {
+      const response = await axios.post("https://api.az-tenders.com/auth/login", {
         email,
         password,
         recaptchaToken,

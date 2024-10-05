@@ -45,7 +45,7 @@ const Home = () => {
   const addMessages = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://api.az-tenders/admin/msg", {
+      const response = await axios.post("https://api.az-tenders.com/admin/msg", {
         nom: formData.nom,
         tel: formData.tel,
         email: formData.email,

@@ -6,7 +6,7 @@ const AdminDashboard = () => {
   const [stats, setStats] = useState([]);
   useEffect(() => {
     const fetchStat = async () => {
-      const response = await axios.get("https://api.az-tenders/admin/stats");
+      const response = await axios.get("https://api.az-tenders.com/admin/stats");
       setStats(response.data.data);
     };
 

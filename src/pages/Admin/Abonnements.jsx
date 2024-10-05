@@ -19,7 +19,7 @@ const Abonnements = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ const Abonnements = () => {
       setIsLoading(true);
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "https://api.az-tenders/admin/abonnements",
+        "https://api.az-tenders.com/admin/abonnements",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -118,7 +118,7 @@ const Abonnements = () => {
           // Requête DELETE vers l'API backend
           const token = localStorage.getItem("token"); // Récupération du token d'authentification
           const response = axios.delete(
-            `https://api.az-tenders/admin/abonnement/${SubId}`,
+            `https://api.az-tenders.com/admin/abonnement/${SubId}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,

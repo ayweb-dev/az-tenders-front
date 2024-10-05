@@ -23,7 +23,7 @@ const Favorites = () => {
   useEffect(() => {
     const fetchSubscription = async () => {
       const response = await axios.get(
-        "https://api.az-tenders/user/checkSubscription",
+        "https://api.az-tenders.com/user/checkSubscription",
         {
           headers: {
             authorization: `Bearer ${token}`,
@@ -44,7 +44,7 @@ const Favorites = () => {
 
     // Fetch user favorites and corresponding tenders
     const fetchFavoritesAndTenders = async () => {
-      const userResponse = await axios.get("https://api.az-tenders/admin/user", {
+      const userResponse = await axios.get("https://api.az-tenders.com/admin/user", {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -54,7 +54,7 @@ const Favorites = () => {
 
       if (favoritesIds.length > 0) {
         const tendersResponse = await axios.post(
-          "https://api.az-tenders/admin/getByIds",
+          "https://api.az-tenders.com/admin/getByIds",
           { ids: favoritesIds },
           {
             headers: {
@@ -70,7 +70,7 @@ const Favorites = () => {
 
     const fetchSectors = async () => {
       const sectorsResponse = await axios.get(
-        "https://api.az-tenders/admin/sectors",
+        "https://api.az-tenders.com/admin/sectors",
         {
           headers: {
             Authorization: `Bearer ${token}`,

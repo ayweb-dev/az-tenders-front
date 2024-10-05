@@ -85,7 +85,7 @@ const EditProfile = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -154,7 +154,7 @@ const EditProfile = () => {
 
       // Envoyer la requête PUT pour mettre à jour les informations de l'utilisateur
       const response = await axios.post(
-        "https://api.az-tenders/admin/update-personal-info",
+        "https://api.az-tenders.com/admin/update-personal-info",
         formData,
         config
       );

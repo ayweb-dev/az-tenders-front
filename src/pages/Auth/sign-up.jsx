@@ -111,7 +111,7 @@ export function SignUp() {
     }
 
     try {
-      const response = await axios.post("https://api.az-tenders/auth/signup", {
+      const response = await axios.post("https://api.az-tenders.com/auth/signup", {
         nom: formData.nom,
         prenom: formData.prenom,
         tel: formData.tel,
@@ -141,7 +141,7 @@ export function SignUp() {
     }
   };
   const handleGoogleLogin = () => {
-    window.open("https://api.az-tenders/auth/google", "_self");
+    window.open("https://api.az-tenders.com/auth/google", "_self");
   };
 
   const handleRecaptchaChange = (token) => {

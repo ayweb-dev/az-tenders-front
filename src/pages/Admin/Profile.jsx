@@ -18,7 +18,7 @@ const AdminProfile = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ const AdminProfile = () => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("https://api.az-tenders/admin/user", {
+        const response = await axios.get("https://api.az-tenders.com/admin/user", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -96,7 +96,7 @@ const AdminProfile = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `https://api.az-tenders/admin/user/${userId}`,
+        `https://api.az-tenders.com/admin/user/${userId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

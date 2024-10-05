@@ -24,7 +24,7 @@ const AjoutAbonnement = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ const AjoutAbonnement = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("https://api.az-tenders/admin/users", {
+        const response = await axios.get("https://api.az-tenders.com/admin/users", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -73,7 +73,7 @@ const AjoutAbonnement = () => {
     const fetchSectors = async () => {
       try {
         const response = await axios.get(
-          "https://api.az-tenders/admin/sectors",
+          "https://api.az-tenders.com/admin/sectors",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -114,7 +114,7 @@ const AjoutAbonnement = () => {
 
     try {
       const response = await axios.post(
-        "https://api.az-tenders/admin/abonnement",
+        "https://api.az-tenders.com/admin/abonnement",
         {
           userId: selectedUser,
           type,

@@ -18,7 +18,7 @@ function Administrateurs() {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ function Administrateurs() {
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const response = await axios.get("https://api.az-tenders/admin/admins", {
+      const response = await axios.get("https://api.az-tenders.com/admin/admins", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -103,7 +103,7 @@ function Administrateurs() {
             const token = localStorage.getItem("token"); // Récupération du token d'authentification
             // const token = "Matoub_3emek";
             const response = axios.delete(
-              `https://api.az-tenders/admin/admin/${adminId}`,
+              `https://api.az-tenders.com/admin/admin/${adminId}`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,

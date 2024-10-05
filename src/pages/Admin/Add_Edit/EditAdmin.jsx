@@ -86,7 +86,7 @@ const EditAdmin = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -124,7 +124,7 @@ const EditAdmin = () => {
         try {
           const token = localStorage.getItem("token"); // Ajout d'un token si nécessaire pour l'authentification
           const response = await axios.get(
-            `https://api.az-tenders/admin/users/${storedAdmin}`,
+            `https://api.az-tenders.com/admin/users/${storedAdmin}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -175,7 +175,7 @@ const EditAdmin = () => {
 
       // Envoyer la requête PUT pour mettre à jour les informations de l'utilisateur
       const response = await axios.post(
-        `https://api.az-tenders/admin/update-admin-info/${storedAdmin}`,
+        `https://api.az-tenders.com/admin/update-admin-info/${storedAdmin}`,
         formData,
         config
       );

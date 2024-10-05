@@ -39,7 +39,7 @@ const EditTenderForm = () => {
     const checkAccess = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("https://api.az-tenders/admin/admin-access", {
+        const response = await axios.get("https://api.az-tenders.com/admin/admin-access", {
           headers: {
             authorization: `Bearer ${token}`,
           },
@@ -89,7 +89,7 @@ const EditTenderForm = () => {
     const tenderToEdit = JSON.parse(localStorage.getItem('tenderToEdit'));
     const fetchTender = async () => {
       try {
-        const response = await axios.get(`https://api.az-tenders/admin/tend/${tenderToEdit}`, {
+        const response = await axios.get(`https://api.az-tenders.com/admin/tend/${tenderToEdit}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -123,7 +123,7 @@ const EditTenderForm = () => {
     const fetchSectors = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get('https://api.az-tenders/admin/sectors', 
+        const response = await axios.get('https://api.az-tenders.com/admin/sectors', 
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -184,7 +184,7 @@ const EditTenderForm = () => {
     try {
       const token = localStorage.getItem("token");
       // Envoi des données vers l'API
-      const response = await axios.put(`https://api.az-tenders/admin/tender/${formData._id}`, formData, {
+      const response = await axios.put(`https://api.az-tenders.com/admin/tender/${formData._id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

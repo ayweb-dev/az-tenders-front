@@ -20,7 +20,7 @@ const TenderDetails = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `https://api.az-tenders/user/tender/${id}`,
+          `https://api.az-tenders.com/user/tender/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

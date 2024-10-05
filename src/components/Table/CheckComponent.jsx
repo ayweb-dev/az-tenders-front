@@ -11,7 +11,7 @@ const CheckUserSubscription = ({ userId }) => {
     const checkSubscription = async () => {
       try {
         const response = await axios.get(
-            `https://api.az-tenders/user/checkSubscriptionByParam/${userId}`,
+            `https://api.az-tenders.com/user/checkSubscriptionByParam/${userId}`,
             {
               headers: {
                 authorization: `Bearer ${token}`,

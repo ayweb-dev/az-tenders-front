@@ -47,7 +47,7 @@ const UserEditPassword = () => {
             };
 
             // Requête PUT pour mettre à jour le mot de passe
-            const response = await axios.post('https://api.az-tenders/admin/update-password', formData, config);
+            const response = await axios.post('https://api.az-tenders.com/admin/update-password', formData, config);
 
             if (response.status === 200) {
                 setSuccessMessage('Mot de passe mis à jour avec succès');

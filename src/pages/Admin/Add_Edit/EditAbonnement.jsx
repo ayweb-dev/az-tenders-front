@@ -25,7 +25,7 @@ const AjoutAbonnement = () => {
     const checkAccess = async () => {
       try {
         const response = await axios.get(
-          "https://api.az-tenders/admin/admin-access",
+          "https://api.az-tenders.com/admin/admin-access",
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ const AjoutAbonnement = () => {
     const fetchSubscription = async () => {
       try {
         const response = await axios
-          .get(`https://api.az-tenders/admin/abo/${SubTo}`, {
+          .get(`https://api.az-tenders.com/admin/abo/${SubTo}`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -86,7 +86,7 @@ const AjoutAbonnement = () => {
     const fetchSectors = async () => {
       try {
         const response = await axios.get(
-          "https://api.az-tenders/admin/sectors",
+          "https://api.az-tenders.com/admin/sectors",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -128,7 +128,7 @@ const AjoutAbonnement = () => {
 
     try {
       const response = await axios.put(
-        `https://api.az-tenders/admin/abonnement/${SubTo}`,
+        `https://api.az-tenders.com/admin/abonnement/${SubTo}`,
         {
           userId: selectedUser,
           type,
