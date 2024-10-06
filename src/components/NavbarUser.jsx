@@ -47,7 +47,7 @@ const NavbarUser = () => {
     };
 
     checkAuth();
-  }, []);
+  }, [navigate]);
 
   const handleLogout = async () => {
     // Afficher l'alerte de confirmation

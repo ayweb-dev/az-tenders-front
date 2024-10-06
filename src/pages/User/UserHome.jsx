@@ -22,7 +22,7 @@ const UserHome = () => {
       // Stocker le token dans localStorage
       localStorage.setItem("token", token);
       // Rediriger vers la page appropriée
-      navigate("/userhome");
+      navigate("/userhome", { replace: true });
     }
   }, [navigate]);
 
