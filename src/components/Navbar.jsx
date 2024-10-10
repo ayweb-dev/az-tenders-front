@@ -221,7 +221,7 @@ const Navbar = () => {
                   to="/signin"
                   className="p-2 font-semibold transition-all duration-200 dark:border-white"
                 >
-                  Sign In
+                  Se Connecter
                 </Link>
               </li>
               <li className="py-4">
@@ -229,7 +229,7 @@ const Navbar = () => {
                   to="/signup"
                   className="mx-2 p-2 font-semibold transition-all duration-200 dark:border-white"
                 >
-                  Sign Up
+                  S'inscrire
                 </Link>
               </li>
             </>

@@ -78,6 +78,7 @@ function Contacts() {
       const token = localStorage.getItem("token"); // Récupération du token d'authentification
       const response = await axios.put(
         `https://api.az-tenders.com/admin/message/${contactId}`,
+        {},
         {
           headers: {
             Authorization: `Bearer ${token}`,

@@ -7,7 +7,7 @@ const config = {
   theme: {
     extend: {
       backgroundImage: {
-        "hesitez-img": "url('/hesitezSection.png')",
+        "hesitez-img": "url('./assets/hesitezSection.webp')",
       },
       fontFamily: {
         Poppins: ["Poppins", "sans-serif"],

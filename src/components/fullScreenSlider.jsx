@@ -3,10 +3,10 @@ import { MdNavigateBefore, MdOutlineNavigateNext } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 // Importer les images directement
-import imgArchives from "/img-archives.png";
-import imgCoffee from "/img-coffee.png";
-import imgHighBenefits from "/img-high-benifits.png";
-import imgSupportClient from "/img-support-client.png";
+import imgArchives from "../assets/img-archives.webp";
+import imgCoffee from "../assets/img-coffee.webp";
+import imgHighBenefits from "../assets/img-high-benifits.webp";
+import imgSupportClient from "../assets/img-support-client.webp";
 
 const FullScreenSlider = () => {
   const [slideIndex, setSlideIndex] = useState(0);

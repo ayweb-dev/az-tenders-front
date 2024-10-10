@@ -164,7 +164,7 @@ const NavbarUser = () => {
                       to="/signin"
                       className="p-2 font-semibold transition-all duration-200 dark:border-white hover:text-green-600"
                     >
-                      Sign In
+                      Se Connecter
                     </Link>
                   </li>
                   <li className="py-4">
@@ -172,7 +172,7 @@ const NavbarUser = () => {
                       to="/signup"
                       className="p-2 font-semibold transition-all duration-200 dark:border-white hover:text-green-600"
                     >
-                      Sign Up
+                      S'inscrire
                     </Link>
                   </li>
                 </>
@@ -254,7 +254,7 @@ const NavbarUser = () => {
                   to="/signin"
                   className="border-2 border-black rounded-lg p-2 font-semibold text-1xl md:text-1xl transition-all duration-200 dark:border-white"
                 >
-                  Sign In
+                  Se Connecter
                 </Link>
               </li>
               <li className="py-4">
@@ -262,7 +262,7 @@ const NavbarUser = () => {
                   to="/signup"
                   className="border-2 border-black rounded-lg mx-2 p-2 font-semibold text-1xl md:text-1xl transition-all duration-200 dark:border-white"
                 >
-                  Sign Up
+                  S'inscrire
                 </Link>
               </li>
             </>

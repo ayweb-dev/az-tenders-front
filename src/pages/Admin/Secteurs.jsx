@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2"; // Importer SweetAlert2
 import NavbarAdmin from "../../components/NavbarAdmin";
 import { SideBar } from "../../components/SideBar";
-import TableModeleButton from "../../components/Table/Modele/TableModeleButton";
+import TableModeleMono from "../../components/Table/Modele/TableModeleMono";
 
 const Secteurs = () => {
   const [dataMyTable, setdataMyTable] = useState([]);
@@ -186,46 +186,7 @@ const Secteurs = () => {
     setCurrentSectorId(null);
   };
 
-  const deleteSector = async (sectorId) => {
-    Swal.fire({
-      title: "Êtes-vous sûr?",
-      text: "Vous ne pourrez pas annuler cette action!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Oui, supprimer!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        try {
-          const token = localStorage.getItem("token"); // Récupération du token d'authentification
-          const response = await axios.delete(
-            `https://api.az-tenders.com/admin/sector/${sectorId}`,
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-          if (response.status === 200) {
-            Swal.fire({
-              icon: "success",
-              title: "Succès",
-              text: "Secteur supprimé avec succès !",
-            });
-            getMyTable(); // Actualiser les données après la suppression
-          }
-        } catch (error) {
-          console.error("Erreur lors de la suppression du secteur :", error);
-          Swal.fire({
-            icon: "error",
-            title: "Erreur",
-            text: "Erreur lors de la suppression du secteur",
-          });
-        }
-      }
-    });
-  };
+  
 
   return (
     <div className="dark:text-white dark:bg-darkColor min-h-screen">
@@ -259,12 +220,11 @@ const Secteurs = () => {
             </Button>
           </div>
           <div>
-            <TableModeleButton
+            <TableModeleMono
               headers={[{ column: "title", label: "Intitulé" }]}
               data={dataMyTable}
               isLoading={isLoading}
               loadingTag={<span>Loading...</span>}
-              delete_func={deleteSector}
               edit_func={editSector} // Ajout de la fonction d'édition
             />
           </div>

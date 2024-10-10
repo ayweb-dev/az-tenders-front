@@ -225,7 +225,7 @@ const Home = () => {
                 <p>
                   Envoyer le reçu de paiement par mail : contact@az-tenders.com
                 </p>
-                <p>Ou, par WhatsApp : +213 666 88 99 55</p>
+                <p>Ou, par WhatsApp : +213 660327728</p>
               </div>
             </div>
           </div>
@@ -253,7 +253,7 @@ const Home = () => {
                     <FaEnvelope size={20} color="#40CB56" />
                   </div>
                   <a
-                    href="mailto:info@example.com"
+                    href="mailto:contact@az-tenders.com"
                     className="text-[#40CB56] text-sm ml-4 dark:text-white"
                   >
                     <small className="block">Email</small>
@@ -265,11 +265,11 @@ const Home = () => {
                     <FaPhoneAlt size={20} color="#40CB56" />
                   </div>
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+213660327728"
                     className="text-[#40CB56] text-sm ml-4 dark:text-white"
                   >
                     <small className="block">Télephone</small>
-                    <strong>+123 456 7890</strong>
+                    <strong>+213 660 327728</strong>
                   </a>
                 </li>
               </ul>
