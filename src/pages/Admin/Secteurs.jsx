@@ -119,49 +119,11 @@ const Secteurs = () => {
   };
 
   // Fonction pour gérer la modification d'un secteur
-  const updateSector = async (newTitle) => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await axios.put(
-        `https://api.az-tenders.com/admin/sector/${currentSectorId}`,
-        {
-          title: newTitle,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (response.status === 200) {
-        Swal.fire({
-          icon: "success",
-          title: "Succès",
-          text: "Secteur modifié avec succès !",
-        });
-        resetForm(); // Réinitialiser le formulaire
-        getMyTable(); // Actualiser les données après la modification
-      }
-    } catch (error) {
-      console.error("Erreur lors de la modification du secteur :", error);
-      Swal.fire({
-        icon: "error",
-        title: "Erreur",
-        text: "Erreur lors de la modification du secteur",
-      });
-    }
-  };
-
-  // Fonction pour afficher la popup de modification
-  const editSector = (sector) => {
-    setCurrentSectorId(sector._id);
-    setSectorTitle(sector.title);
-
+  const editSector = async (sector) => {
     Swal.fire({
       title: "Modifier le secteur",
       html: `
-        <input id="sectorTitle" class="swal2-input" placeholder="Intitulé" value="${sectorTitle}">
+        <input id="sectorTitle" class="swal2-input" placeholder="Intitulé" value="${sector.title || ""}">
       `,
       showCancelButton: true,
       confirmButtonText: "Modifier",
@@ -170,16 +132,41 @@ const Secteurs = () => {
         const newTitle = Swal.getPopup().querySelector("#sectorTitle").value;
         if (!newTitle) {
           Swal.showValidationMessage("Veuillez entrer un intitulé");
+          return false;
         }
         return newTitle;
       },
-    }).then((result) => {
-      if (result.isConfirmed) {
-        updateSector(result.value);
+    }).then(async (result) => {
+      if (result.isConfirmed && result.value) {
+        try {
+          const token = localStorage.getItem("token");
+          const response = await axios.put(
+            `http://localhost:5555/admin/sector/${sector}`,
+            { title: result.value },
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+  
+          if (response.status === 200) {
+            Swal.fire({
+              icon: "success",
+              title: "Succès",
+              text: "Secteur modifié avec succès !",
+            });
+            resetForm(); 
+            getMyTable(); 
+          }
+        } catch (error) {
+          console.error("Erreur lors de la modification du secteur :", error);
+          Swal.fire({
+            icon: "error",
+            title: "Erreur",
+            text: "Erreur lors de la modification du secteur",
+          });
+        }
       }
     });
   };
-
+  
   // Fonction pour réinitialiser le formulaire
   const resetForm = () => {
     setSectorTitle("");

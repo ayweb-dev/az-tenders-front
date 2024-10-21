@@ -154,10 +154,11 @@ const AddTenderForm = () => {
 
   // Gestion de l'upload de l'image
   const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      image: e.target.files[0],
-    });
+    const file = e.target.files[0];
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      image: file,
+    }));
   };
 
   const handleSectorChange = (e) => {
@@ -192,6 +193,7 @@ const AddTenderForm = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
