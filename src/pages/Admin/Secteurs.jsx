@@ -141,7 +141,7 @@ const Secteurs = () => {
         try {
           const token = localStorage.getItem("token");
           const response = await axios.put(
-            `http://localhost:5555/admin/sector/${sector}`,
+            `https://api.az-tenders.com/admin/sector/${sector}`,
             { title: result.value },
             { headers: { Authorization: `Bearer ${token}` } }
           );
