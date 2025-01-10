@@ -69,7 +69,7 @@ const Tenders = () => {
       });
 
       // Mettre à jour l'état avec les données récupérées
-      setdataMyTable(response.data.tenders || []);
+      setdataMyTable(response.data.tenders.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) || []);    
     } catch (error) {
       console.error("Erreur lors de la récupération des secteurs :", error);
     } finally {
@@ -112,7 +112,7 @@ const Tenders = () => {
       });
     } catch (error) {
       console.error("Erreur lors de la suppression du secteur :", error);
-      setMessage("Erreur lors de la suppressio");
+      setMessage("Erreur lors de la suppression");
     }
   };
 

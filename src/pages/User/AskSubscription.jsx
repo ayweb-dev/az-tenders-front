@@ -41,21 +41,6 @@ const SubscriptionRequest = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prevForm) => {
-      // if (name === "dateDeb") {
-      //   // Convertir la valeur de dateDeb en objet Date
-      //   const startDate = new Date(value);
-      //   // Ajouter un an à la date de début
-      //   const endDate = new Date(startDate);
-      //   endDate.setFullYear(startDate.getFullYear() + 1);
-      //   // Convertir la date de fin au format YYYY-MM-DD
-      //   const endDateString = endDate.toISOString().split("T")[0];
-
-      //   return {
-      //     ...prevForm,
-      //     [name]: value,
-      //     dateFin: endDateString,
-      //   };
-      // }
       if (name === "type" && value === "Gold") {
         // Si le type est "Gold", sélectionner tous les secteurs
         return {

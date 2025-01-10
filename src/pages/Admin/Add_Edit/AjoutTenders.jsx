@@ -4,67 +4,19 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import NavbarAdmin from "../../../components/NavbarAdmin";
 import { SideBar } from "../../../components/SideBar";
+import CloudinaryUploadWidget from "../../../components/UploadWidget";
+// import { Cloudinary } from "@cloudinary/url-gen";
+// import { AdvancedImage, responsive, placeholder } from "@cloudinary/react";
 
-const wilayas = [
-  "Adrar",
-  "Chlef",
-  "Laghouat",
-  "Oum El Bouaghi",
-  "Batna",
-  "Béjaïa",
-  "Biskra",
-  "Béchar",
-  "Blida",
-  "Bouira",
-  "Tamanrasset",
-  "Tébessa",
-  "Tlemcen",
-  "Tiaret",
-  "Tizi Ouzou",
-  "Alger",
-  "Djelfa",
-  "Jijel",
-  "Sétif",
-  "Saïda",
-  "Skikda",
-  "Sidi Bel Abbès",
-  "Annaba",
-  "Guelma",
-  "Constantine",
-  "Médéa",
-  "Mostaganem",
-  "M’Sila",
-  "Mascara",
-  "Ouargla",
-  "Oran",
-  "El Bayadh",
-  "Illizi",
-  "Bordj Bou Arreridj",
-  "Boumerdès",
-  "El Tarf",
-  "Tindouf",
-  "Tissemsilt",
-  "El Oued",
-  "Khenchela",
-  "Souk Ahras",
-  "Tipaza",
-  "Mila",
-  "Aïn Defla",
-  "Naâma",
-  "Aïn Témouchent",
-  "Ghardaïa",
-  "Relizane",
-  "Timimoune",
-  "Bordj Badji Mokhtar",
-  "Ouled Djellal",
-  "Béni Abbès",
-  "In Salah",
-  "In Guezzam",
-  "Touggourt",
-  "Djanet",
-  "El M'Ghair",
-  "El Meniaa",
-];
+const wilayas = ["Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra",
+  "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret",
+  "Tizi Ouzou", "Alger", "Djelfa", "Jijel", "Sétif", "Saïda", "Skikda",
+  "Sidi Bel Abbès", "Annaba", "Guelma", "Constantine", "Médéa", "Mostaganem",
+  "M’Sila", "Mascara", "Ouargla", "Oran", "El Bayadh", "Illizi", "Bordj Bou Arreridj",
+  "Boumerdès", "El Tarf", "Tindouf", "Tissemsilt", "El Oued", "Khenchela",
+  "Souk Ahras", "Tipaza", "Mila", "Aïn Defla", "Naâma", "Aïn Témouchent", "Ghardaïa", "Relizane",
+  'Timimoune', 'Bordj Badji Mokhtar', 'Ouled Djellal', 'Béni Abbès', 'In Salah', 'In Guezzam',
+  'Touggourt', 'Djanet', "El M'Ghair", 'El Meniaa'];
 
 const AddTenderForm = () => {
   const [selectedSectors, setSelectedSectors] = useState([]);
@@ -80,7 +32,7 @@ const AddTenderForm = () => {
     dateEchehance: "",
     wilaya: "",
     sectors: [],
-    image: null,
+    imageUrl: null,
   });
 
   const navigate = useNavigate();
@@ -152,15 +104,6 @@ const AddTenderForm = () => {
     });
   };
 
-  // Gestion de l'upload de l'image
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      image: file,
-    }));
-  };
-
   const handleSectorChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
@@ -178,14 +121,60 @@ const AddTenderForm = () => {
     });
   };
 
+  const [publicId, setPublicId] = useState("");
+
+  const cloudName = "dzugplucv"; // Replace with your Cloudinary cloud name
+  const uploadPreset = "asbpcfsk"; // Replace with your Cloudinary upload preset
+
+  const uwConfig = {
+    cloudName,
+    uploadPreset,
+    folder: "tenders",
+    multiple: false,  //restrict upload to a single file
+    clientAllowedFormats: ["jpg", "png", "pdf"],
+    maxImageFileSize: 20 * 1024 * 1024, // 20MB max file size
+    // cropping: true, //add a cropping step
+    // showAdvancedOptions: true,  //add advanced options (public_id and tag)
+    // sources: [ "local", "url"], // restrict the upload sources to URL and local files
+    // tags: ["users", "profile"], //add the given tags to the uploaded files
+    // context: {alt: "user_uploaded"}, //add the given context data to the uploaded files
+    // clientAllowedFormats: ["images"], //restrict uploading to image files only
+    // maxImageWidth: 2000, //Scales the image down to a width of 2000 pixels before uploading
+    // theme: "purple", //change to a purple theme
+  };
+
+  const handleImageUpload = (publicId) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      imageUrl: `https://res.cloudinary.com/${cloudName}/image/upload/${publicId}`,
+    }));
+  };
+
+  const resetForm = () => {
+    setSelectedSectors([]);
+    setFormData({
+      title: "",
+      entreprise: "",
+      anep: "",
+      journal: "",
+      type: "",
+      dateDebut: "",
+      dateEchehance: "",
+      wilaya: "",
+      sectors: [],
+      imageUrl: "",
+    });
+    setPublicId("");
+  };
+
   // Gestion de l'envoi du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // console.log(formData);
-
       const token = localStorage.getItem("token");
+      console.log(formData);
+
 
       const response = await axios.post(
         "https://api.az-tenders.com/admin/tender",
@@ -193,36 +182,42 @@ const AddTenderForm = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
           },
         }
       );
 
-      // Gestion du succès
-      Swal.fire({
-        title: "Succès",
-        text: "Tender ajouté avec succès",
-        icon: "success",
-      });
+      if (response.status === 201) {
+        Swal.fire({
+          title: "Succès",
+          text: "Tender ajouté avec succès",
+          icon: "success",
+        });
 
-      setFormData({
-        title: "",
-        entreprise: "",
-        anep: "",
-        journal: "",
-        type: "",
-        dateDebut: "",
-        dateEchehance: "",
-        wilaya: "",
-        sectors: [],
-        image: null,
-      });
+        resetForm();
+      }
     } catch (error) {
-      Swal.fire({
-        title: "Erreur !",
-        error,
-        icon: "error",
-      });
+      if (error.response) { // Vérifie si error.response existe
+        if (error.response.status === 500) {
+          Swal.fire({
+            title: "Erreur !",
+            text: "Numéro ANEP déjà existant",
+            icon: "error",
+          });
+        } else {
+          Swal.fire({
+            title: "Erreur !",
+            text: error.response.data.message || "Une erreur s'est produite",
+            icon: "error",
+          });
+        }
+      } else {
+        Swal.fire({
+          title: "Erreur !",
+          text: error.message || "Une erreur inconnue s'est produite",
+          icon: "error",
+        });
+      }
     }
   };
 
@@ -361,13 +356,13 @@ const AddTenderForm = () => {
 
               {/* Wilaya */}
               <div className="mb-4">
-                <label className="text-gray-700 font-semibold">Wilaya</label>
+                <label className="text-gray-600 dark:text-gray-300 ">Wilaya</label>
                 <div className="relative text-gray-300">
                   <select
                     name="wilaya"
                     value={formData.wilaya}
                     onChange={handleChange}
-                    className="block w-full text-gray-900 bg-white dark:bg-gray-700  border border-black rounded-lg shadow-sm mt-2  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="block w-full text-gray-900 bg-white dark:bg-gray-700 dark:text-white  border border-black rounded-lg shadow-sm mt-2  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     required
                   >
                     <option value="" disabled>
@@ -411,27 +406,26 @@ const AddTenderForm = () => {
                 </div>
               </div>
 
-              {/* Image */}
               <div>
-                <label className="block text-gray-600 dark:text-gray-300 mb-2">
-                  Image (optionnel)
-                </label>
-                <input
-                  type="file"
-                  name="image"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-300"
+
+                {/* Image */}
+                {/* Cloudinary Upload Widget */}
+                <CloudinaryUploadWidget
+                  uwConfig={uwConfig}
+                  setPublicId={handleImageUpload}
                 />
               </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-blue-400 dark:focus:ring-blue-600"
-              >
-                Ajouter le Tender
-              </button>
+              <div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition-colors duration-300 focus:outline-none focus:ring-4 focus:ring-blue-400 dark:focus:ring-blue-600"
+                >
+                  Ajouter le Tender
+                </button>
+              </div>
             </form>
           </div>
         </div>

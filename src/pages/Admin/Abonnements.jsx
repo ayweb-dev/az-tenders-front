@@ -85,7 +85,8 @@ const Abonnements = () => {
   // decomposer les structures de donnés pour les integrer a une seule
   const flattenedData = dataMyTable.map((item) => ({
     _id: item._id,
-    email: item.user.email,
+    email: item.user ? item.user.email : "",
+    tel : item.user ? item.user.tel : "",
     nom: item.user ? item.user.nom : "",
     prenom: item.user ? item.user.prenom : "",
     dateFin: item.dateFin,
@@ -215,6 +216,7 @@ const Abonnements = () => {
             <TableModeleButton
               headers={[
                 { column: "email", label: "Email" },
+                { column: "tel", label: "tel" },
                 { column: "nom", label: "nom" },
                 { column: "prenom", label: "prenom" },
                 { column: "type", label: "types" },
@@ -231,6 +233,7 @@ const Abonnements = () => {
             <TableModeleButton
               headers={[
                 { column: "email", label: "Email" },
+                { column: "tel", label: "tel" },
                 { column: "nom", label: "nom" },
                 { column: "prenom", label: "prenom" },
                 { column: "type", label: "types" },
@@ -246,6 +249,7 @@ const Abonnements = () => {
             <TableModeleButton
               headers={[
                 { column: "email", label: "Email" },
+                { column: "tel", label: "tel" },
                 { column: "nom", label: "nom" },
                 { column: "prenom", label: "prenom" },
                 { column: "type", label: "types" },
@@ -261,6 +265,7 @@ const Abonnements = () => {
             <TableModeleMono
               headers={[
                 { column: "email", label: "Email" },
+                { column: "tel", label: "tel" },
                 { column: "nom", label: "nom" },
                 { column: "prenom", label: "prenom" },
                 { column: "type", label: "types" },

@@ -262,14 +262,14 @@ const Table = ({
       <div className="flex items-center justify-center flex-col mb-4">
         {isMobile ? (
           <select
-            className="p-2 border rounded dark:text-black"
+            className="p-2 pr-7 border rounded dark:text-black"
             value={selectedType || ""}
             onChange={(e) => {
               setSelectedType(e.target.value);
               setCurrentPage(1);
             }}
           >
-            <option value="">Sélectionnez un type</option>
+            <option value="">Type d'appels d'offres</option>
             {types.map((type) => (
               <option key={type} value={type}>
                 {type}
@@ -278,7 +278,7 @@ const Table = ({
           </select>
         ) : (
           <>
-            <div className="flex md:flex-wrap space-x-4 justify-center overflow-x-scroll">
+            <div className="flex md:flex-wrap space-x-4 justify-center">
               {types.map((type) => (
                 <button
                   key={type}
@@ -329,7 +329,7 @@ const Table = ({
         </div>
         <div>
           <input
-            className="py-1 lg:px-3 md:px-3 border rounded"
+            className="py-1 lg:px-3 md:px-3 border rounded text-black"
             type="text"
             value={searchValue}
             onChange={handleSearchChange}

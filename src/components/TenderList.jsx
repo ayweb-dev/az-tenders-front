@@ -21,57 +21,57 @@ const wilayas = [
   { id: "5", name: "Batna" },
   { id: "6", name: "Béjaïa" },
   { id: "7", name: "Biskra" },
-  { id: "8", name: "Bordj Bou Arréridj" },
-  { id: "9", name: "Bouira" },
-  { id: "10", name: "Tamanrasset" },
-  { id: "11", name: "Tébessa" },
-  { id: "12", name: "Tlemcen" },
-  { id: "13", name: "Tiaret" },
-  { id: "14", name: "Tizi Ouzou" },
-  { id: "15", name: "Alger" },
-  { id: "16", name: "Djelfa" },
-  { id: "17", name: "Jijel" },
-  { id: "18", name: "Sétif" },
-  { id: "19", name: "Saïda" },
-  { id: "20", name: "Skikda" },
-  { id: "21", name: "Sidi Bel Abbès" },
-  { id: "22", name: "Annaba" },
-  { id: "23", name: "Guelma" },
-  { id: "24", name: "Constantine" },
-  { id: "25", name: "Médéa" },
-  { id: "26", name: "Mostaganem" },
-  { id: "27", name: "M'Sila" },
-  { id: "28", name: "El Oued" },
-  { id: "29", name: "Bordj Badji Mokhtar" },
-  { id: "30", name: "Ghardaïa" },
-  { id: "31", name: "Relizane" },
-  { id: "32", name: "Tissemsilt" },
-  { id: "33", name: "Khenchela" },
-  { id: "34", name: "Souk Ahras" },
-  { id: "35", name: "Tipaza" },
-  { id: "36", name: "Mila" },
-  { id: "37", name: "Aïn Defla" },
-  { id: "38", name: "Naâma" },
-  { id: "39", name: "Aïn Témouchent" },
-  { id: "40", name: "Sidi Aïch" },
-  { id: "41", name: "El Bayadh" },
-  { id: "42", name: "El Tarf" },
-  { id: "43", name: "Tindouf" },
-  { id: "44", name: "Tissemsilt" },
-  { id: "45", name: "Adrar" },
-  { id: "46", name: "Chlef" },
-  { id: "47", name: "Laghouat" },
-  { id: "48", name: "Oum El Bouaghi" },
-  { id: "49", name: "Batna" },
-  { id: "50", name: "Béjaïa" },
-  { id: "51", name: "Biskra" },
-  { id: "52", name: "Bordj Bou Arréridj" },
-  { id: "53", name: "Bouira" },
-  { id: "54", name: "Tamanrasset" },
-  { id: "55", name: "Tébessa" },
-  { id: "56", name: "Tlemcen" },
-  { id: "57", name: "Tiaret" },
-  { id: "58", name: "Tizi Ouzou" },
+  { id: "8", name: "Béchar" },
+  { id: "9", name: "Blida" },
+  { id: "10", name: "Bouira" },
+  { id: "11", name: "Tamanrasset" },
+  { id: "12", name: "Tébessa" },
+  { id: "13", name: "Tlemcen" },
+  { id: "14", name: "Tiaret" },
+  { id: "15", name: "Tizi Ouzou" },
+  { id: "16", name: "Alger" },
+  { id: "17", name: "Djelfa" },
+  { id: "18", name: "Jijel" },
+  { id: "19", name: "Sétif" },
+  { id: "20", name: "Saïda" },
+  { id: "21", name: "Skikda" },
+  { id: "22", name: "Sidi Bel Abbès" },
+  { id: "23", name: "Annaba" },
+  { id: "24", name: "Guelma" },
+  { id: "25", name: "Constantine" },
+  { id: "26", name: "Médéa" },
+  { id: "27", name: "Mostaganem" },
+  { id: "28", name: "M’Sila" },
+  { id: "29", name: "Mascara" },
+  { id: "30", name: "Ouargla" },
+  { id: "31", name: "Oran" },
+  { id: "32", name: "El Bayadh" },
+  { id: "33", name: "Illizi" },
+  { id: "34", name: "Bordj Bou Arreridj" },
+  { id: "35", name: "Boumerdès" },
+  { id: "36", name: "El Tarf" },
+  { id: "37", name: "Tindouf" },
+  { id: "38", name: "Tissemsilt" },
+  { id: "39", name: "El Oued" },
+  { id: "40", name: "Khenchela" },
+  { id: "41", name: "Souk Ahras" },
+  { id: "42", name: "Tipaza" },
+  { id: "43", name: "Mila" },
+  { id: "44", name: "Aïn Defla" },
+  { id: "45", name: "Naâma" },
+  { id: "46", name: "Aïn Témouchent" },
+  { id: "47", name: "Ghardaïa" },
+  { id: "48", name: "Relizane" },
+  { id: "49", name: "Timimoune" },
+  { id: "50", name: "Bordj Badji Mokhtar" },
+  { id: "51", name: "Ouled Djellal" },
+  { id: "52", name: "Béni Abbès" },
+  { id: "53", name: "In Salah" },
+  { id: "54", name: "In Guezzam" },
+  { id: "55", name: "Touggourt" },
+  { id: "56", name: "Djanet" },
+  { id: "57", name: "El M'Ghair" },
+  { id: "58", name: "El Meniaa" }
 ];
 
 const TenderList = () => {
@@ -84,7 +84,10 @@ const TenderList = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [sectors, setSectors] = useState([]);
   const [entreprises, setEntreprises] = useState([]);
+  const [filteredEntreprises, setFilteredEntreprises] = useState([]);
+  const [searchTermEntreprise, setSearchTermEntreprise] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
+  const [savedFilters, setSavedFilters] = useState({});
   const [filters, setFilters] = useState({
     sector: "",
     entreprise: "",
@@ -138,7 +141,6 @@ const TenderList = () => {
 
       setTenders(sortedTenders);
       setFilteredTenders(sortedTenders); // Initialiser les tenders filtrés
-
       setLoading(false);
     };
 
@@ -151,12 +153,55 @@ const TenderList = () => {
       const entreprisesResponse = await axios.get(
         "https://api.az-tenders.com/admin/entreprises"
       );
-      setEntreprises(entreprisesResponse.data.entreprises);
+      //setEntreprises(entreprisesResponse.data.entreprises);
+      const sortedEntreprises = entreprisesResponse.data.entreprises.sort((a, b) =>
+        a.localeCompare(b)
+      );
+      setEntreprises(sortedEntreprises);
+      setFilteredEntreprises(sortedEntreprises);
     };
+
+    // if (!loading) {
+        const save = JSON.parse(localStorage.getItem("filters"));
+        if (save) {
+          setSavedFilters(save);
+
+        }
+    // }
 
     fetchTenders();
     fetchSectorsAndEntreprises();
   }, []);
+
+  useEffect(() => {
+    if (savedFilters) {
+      setFilters(savedFilters);
+    }
+  }, [savedFilters]);
+
+  useEffect(() => {
+    // Appliquer les filtres une fois que filters est mis à jour
+    if (filters && !loading) {
+      applyFilters(); // Appliquer les filtres
+    }
+  }, [filters, loading]);
+
+  const handleSearchChange = (e) => {
+    const searchValue = e.target.value;
+    setSearchTermEntreprise(searchValue);
+
+    const { name, value } = e.target;
+    if (name === "entreprise" && value && !entreprises.includes(value)) {
+      return; // Ne pas appliquer le filtre si l’entreprise est invalide
+    }
+    
+    // Filtrer les entreprises en fonction du terme saisi
+    const filtered = entreprises.filter((entreprise) =>
+      entreprise.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredEntreprises(filtered);
+    setFilters((prevFilters) => ({...prevFilters, entreprise: searchValue }));
+  };
 
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
@@ -219,7 +264,20 @@ const TenderList = () => {
       });
     }
 
+    localStorage.setItem("filters", JSON.stringify(filters)); // Sauvegarder les filtres
     setFilteredTenders(tempTenders);
+  };
+
+  const resetFilters = () => {
+    setFilters({
+      sector: "",
+      entreprise: "",
+      startDate: "",
+      endDate: "",
+      tenderType: "",
+      wilaya: "",
+    });
+    setFilteredTenders(tenders);
   };
 
   const handleDetailsClick = (tender, isSubscribedToTender) => {
@@ -295,6 +353,11 @@ const TenderList = () => {
     indexOfLastTender
   );
 
+  const parseDateString = (dateString) => {
+    const [day, month, year] = dateString.split("-");
+    return new Date(`${year}-${month}-${day}`); // Format yyyy-mm-dd
+  };
+
   return (
     <div className="container mx-auto">
       <button
@@ -322,6 +385,7 @@ const TenderList = () => {
             <select
               name="sector"
               onChange={handleFilterChange}
+              value={filters.sector || ""} 
               className="dark:bg-darkColor text-metal-500 dark:text-white mb-2 w-full md:w-[286px] justify-start gap-2  border rounded-xl border-metal-100"
             >
               <option
@@ -344,28 +408,33 @@ const TenderList = () => {
             <select
               className="dark:bg-darkColor text-metal-500 dark:text-white mb-2 w-full md:w-[286px] justify-start gap-2 border rounded-xl border-metal-100"
               name="tenderType"
+              value={filters.tenderType || ""}
               onChange={handleFilterChange}
             >
               <option value="">Type de tender</option>
               <option value="appel d'offre">Appel d'offre</option>
-              <option value="prorogation de délais">
+              <option value="prorogation de delais">
                 prorogation de délais
               </option>
               <option value="avis d'attribution">Avis d'attribution</option>
-              <option value="consultaion">Consultaion</option>
-              <option value="concour">Concour</option>
+              <option value="consultation">Consultaion</option>
+              <option value="concours">Concours</option>
               <option value="annulation">Annulation</option>
+              <option value="infructuosite">infructuosite</option>
+              <option value="mise en demeure">mise en demeure</option>
+              <option value="vente et adjudication">vente et adjudication</option>
             </select>
 
             <select
               className="dark:bg-darkColor text-metal-500 dark:text-white w-full md:w-[286px] justify-start gap-2 border rounded-xl border-metal-100"
               name="wilaya"
+              value={filters.wilaya || ""}
               onChange={handleFilterChange}
             >
               <option value="">Sélectionnez une wilaya</option>
               {wilayas.map((wilaya) => (
-                <option key={wilaya.id} value={wilaya.id}>
-                  {wilaya.name}
+                <option key={wilaya.id} value={wilaya.name}>
+                  {wilaya.id}-{wilaya.name}
                 </option>
               ))}
             </select>
@@ -373,32 +442,54 @@ const TenderList = () => {
 
           {/*********section invisible pour le non-abonné ***************************/}
           {isSubscribed ? (
-            <>
-              <div className="w-full text-center px-3">
-                <select
-                  name="entreprise"
-                  onChange={handleFilterChange}
-                  className="dark:bg-darkColor text-metal-500 dark:text-white w-full md:w-10/12 justify-start gap-2 border rounded-xl mx-auto border-metal-100"
-                >
-                  <option value="">Sélectionnez un organisme</option>
-                  {entreprises.map((entreprise, index) => (
-                    <option key={index} value={entreprise}>
-                      {entreprise}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                  <>
+          <div className="w-full text-center px-3">
+            <input
+              type="text"
+              name="entreprise"
+              value={searchTermEntreprise || filters.entreprise || ""}
+              onChange={handleSearchChange}
+              placeholder="Tapez pour rechercher un organisme"
+              className="dark:bg-darkColor text-metal-500 dark:text-white w-full md:w-10/12 justify-start gap-2 border rounded-xl mx-auto border-metal-100 p-2"
+            />
+            {searchTermEntreprise && (
+              <ul className="bg-white dark:bg-darkColor border border-metal-100 rounded-xl w-full md:w-10/12 mx-auto text-left max-h-40 overflow-y-auto">
+                {filteredEntreprises.map((entreprise, index) => (
+                  <li
+                    key={index}
+                    className="p-2 hover:bg-metal-100 cursor-pointer"
+                    onClick={() => {
+                      setSearchTermEntreprise(entreprise); // Remplir la zone de texte
+                      setFilteredEntreprises([]); // Masquer les suggestions
+                      handleFilterChange({
+                        target: {
+                          name: "entreprise",
+                          value: entreprise,
+                        },
+                      });
+                    }}
+                  >
+                    {entreprise}
+                  </li>
+                ))}
+                {filteredEntreprises.length === 0  &&  searchTermEntreprise.length === 0 &&(
+                  <li className="p-2 text-gray-500">Aucun résultat trouvé</li>
+                )}
+              </ul>
+            )}
+          </div>
 
               <div className="mt-2 gap-3 flex flex-col md:flex-row justify-center items-center">
                 <DatePickerComponent
-                  placeholder={"Date d'échehance inférieure à"}
+                  placeholder={"Date d'échéance inférieure à"}
                   selectedDate={filters.startDate}
+                  value={filters.startDate}
                   onDateChange={(date) =>
                     setFilters((prev) => ({ ...prev, startDate: date }))
                   }
                 />{" "}
                 <DatePickerComponent
-                  placeholder={"Date d'échehance suppérieure à"}
+                  placeholder={"Date d'échéance supérieure à"}
                   selectedDate={filters.endDate}
                   onDateChange={(date) =>
                     setFilters((prev) => ({ ...prev, endDate: date }))
@@ -419,12 +510,12 @@ const TenderList = () => {
           >
             Appliquer le filtre
           </button>
-          {/* <button
+          <button
             onClick={resetFilters}
             className="mt-3 mx-auto p-2 rounded-sm border-2 text-gray-500 dark:text-slate-500 hover:text-green-700 dark:hover:text-green-700 border-green-700 text-center w-full"
           >
             Réinitialiser le filtre
-          </button> */}
+          </button>
         </div>
       )}
       <h3 className="font-Poppins m-6 text-heading-6 text-black dark:text-slate-100">
@@ -482,15 +573,15 @@ const TenderList = () => {
                     {tender.wilaya}
                   </p>
                   <p
-                    className={`${
-                      new Date(tender.dateEchehance) < new Date()
+                    className={`${tender.dateEchehance &&
+                        parseDateString(tender.dateEchehance) < new Date()
                         ? "text-red-500"
                         : ""
-                    }`}
+                      }`}
                   >
                     <FaCalendarTimes className="inline mr-1 text-greenLogo" />
                     {tender.dateEchehance}
-                    {new Date(tender.dateEchehance) < new Date() && (
+                    {tender.dateEchehance && parseDateString(tender.dateEchehance) < new Date() && (
                       <span className="ml-1">(expiré)</span>
                     )}
                   </p>
@@ -615,7 +706,7 @@ const TenderList = () => {
           </div>
         );
       })}
-      <div className="flex justify-center items-center mt-9">
+      <div className="flex justify-center items-center my-9">
         <button
           className="p-2 bg-green-700 text-slate-200 rounded-md"
           onClick={prevPage}

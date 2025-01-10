@@ -231,7 +231,7 @@ const Table = ({ headers, data, isLoading, loadingTag, delete_func }) => {
         </div>
         <div>
           <input
-            className="py-1 lg:px-3 md:px-3border rounded"
+            className="py-1 lg:px-3 md:px-3border rounded text-black"
             type="text"
             value={searchValue}
             onChange={handleSearchChange}

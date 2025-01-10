@@ -24,7 +24,7 @@ const UserHome = () => {
       // Rediriger vers la page appropriée
       navigate("/userhome", { replace: true });
     }
-  }, [navigate]);
+  }, []);
 
   localStorage.removeItem("userToEdit");
   localStorage.removeItem("tenderToEdit");
@@ -44,14 +44,14 @@ const UserHome = () => {
 
         {/* FOOTER */}
       </div>
-      <footer className="bg-gray-900 mt-40 font-Poppins text-center md:text-right w-full">
-        <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+      <footer className="bg-gray-900 font-Poppins text-center md:text-right">
+        <div className="mx-auto w-full max-w-screen-xl p-3 py-6 lg:py-8">
           <div className="md:flex  md:justify-between">
             <div className="mb-6 md:mb-0">
               <a href="./" className="flex items-center">
                 <img
                   src={logoPrimary}
-                  className="h-10 md:h-14 lg:h-20 me-6"
+                  className="h-8 md:h-10 lg:h-15 me-6"
                   alt="AZ Tenders Logo"
                 />
                 <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
@@ -59,29 +59,70 @@ const UserHome = () => {
                 </span>
               </a>
             </div>
-            <div className="">
-              <ul className="flex mt-4 space-x-4">
-                {/* Facebook */}
-                <li className=" h-10 w-10 flex items-center justify-center shrink-0">
-                  <a href="#">
-                    <FaFacebookSquare size={30} color="#40CB56" />
+            <div>
+            <small className="block text-white">Télephone</small>
+              <a href="tel:+213791752266"
+                    className="text-[#40CB56] text-sm ml-4 text-white"
+                  >
+                    
+                    <strong>+213 791 75 22 66</strong>
                   </a>
-                </li>
-
-                {/* LinkedIn */}
-                <li className=" h-10 w-10 flex items-center justify-center shrink-0">
-                  <a href="#">
-                    <FaLinkedin size={30} color="#40CB56" />
+                  <a
+                    href="tel:+213663700766"
+                    className="text-[#40CB56] text-sm ml-4 text-white"
+                  >
+                    <strong>+213 663 70 07 66</strong>
                   </a>
-                </li>
-
-                {/* Instagram */}
-                <li className=" h-10 w-10  flex items-center justify-center shrink-0 overflow-hidden">
-                  <a href="#">
-                    <FaInstagramSquare size={30} color="#40CB56" />
+            </div>
+            <div>
+            <small className="block text-white">Email</small>
+            <a
+                    href="mailto:info@example.com"
+                    className="text-[#40CB56] text-sm ml-4 text-white"
+                  >
+                    <strong>contact@az-tenders.com</strong>
                   </a>
-                </li>
-              </ul>
+            </div>
+          </div>
+          
+          <div>
+            <div className="md:flex md:justify-around md:items-center">
+              <div className="mt-5">
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="">
+                    <a href="#Slider" className="hover:underline">
+                      Présentation
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-5">
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="">
+                    <a href="#About Us" className="hover:underline">
+                      A propos
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-5">
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="">
+                    <a href="#Offres" className="hover:underline">
+                      Offres
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-5">
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="">
+                    <a href="#Contact" className="hover:underline">
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -94,26 +135,20 @@ const UserHome = () => {
               </a>
               . All Rights Reserved.
             </p>
-            <div className="flex  justify-center items-center mt-0">
+            <div className="flex mt-4 justify-center items-center mt-0">
               {/* Facebook */}
               <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                href="https://www.facebook.com/profile.php?id=61563836030318"
+                className="text-gray-500 hover:text-white 
+ dark:hover:text-white"
               >
                 <FaFacebookSquare className="w-4 h-4" />
                 <span className="sr-only">Facebook page</span>
               </a>
-              {/* Twitter */}
               <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-              >
-                <BsTwitterX className="w-4 h-4" />
-                <span className="sr-only">Twitter page</span>
-              </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                href="https://www.instagram.com/ayweb_officiel?igsh=cXV4MWduZmwwZ2Ny"
+                className="text-gray-500 hover:text-white 
+ dark:hover:text-white ms-5"
               >
                 <FaInstagramSquare className="w-4 h-4" />
                 <span className="sr-only">Instagram page</span>
@@ -122,7 +157,8 @@ const UserHome = () => {
               {/* LinkedIn */}
               <a
                 href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                className="text-gray-500 hover:text-white 
+ dark:hover:text-white ms-5"
               >
                 <FaLinkedin className="w-4 h-4" />
                 <span className="sr-only">LinkedIn page</span>

@@ -57,7 +57,6 @@ const UserProfile = () => {
           },
         });
         setUser(response.data.user);
-        console.log(user);
         
       } catch (error) {
         console.error(

@@ -4,6 +4,7 @@ import NavbarAdmin from "../../../components/NavbarAdmin";
 import { SideBar } from "../../../components/SideBar";
 import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
+import CloudinaryUploadWidget from "../../../components/UploadWidget";
 
 const wilayas = ["Adrar", "Chlef", "Laghouat", "Oum El Bouaghi", "Batna", "Béjaïa", "Biskra",
   "Béchar", "Blida", "Bouira", "Tamanrasset", "Tébessa", "Tlemcen", "Tiaret",
@@ -72,19 +73,12 @@ const EditTenderForm = () => {
     checkAccess();
   }, [navigate]);
 
+  const formatDateForInput = (dateString) => {
+    const [day, month, year] = dateString.split("-");
+    return `${year}-${month}-${day}`;
+  };
+
   useEffect(() => {
-    const formatDate = (dateString) => {
-      if (!dateString) return ''; // Vérifiez si la date existe
-      const date = new Date(dateString);
-      if (isNaN(date.getTime())) return ''; // Vérifiez si la date est valide
-    
-      const day = String(date.getDate()).padStart(2, '0'); // Ajoute un 0 devant si nécessaire
-      const month = String(date.getMonth() + 1).padStart(2, '0'); // Mois de 0 à 11, donc +1
-      const year = date.getFullYear();
-    
-      return `${day}/${month}/${year}`; // Format jj/mm/AAAA
-    };
-    
     const token = localStorage.getItem("token");
     const tenderToEdit = JSON.parse(localStorage.getItem('tenderToEdit'));
     const fetchTender = async () => {
@@ -104,11 +98,11 @@ const EditTenderForm = () => {
             anep: tender.anep || '',
             journal: tender.journal || '',
             type: tender.type || '',
-            dateDebut: formatDate(tender.dateDebut) || '',
-            dateEchehance: formatDate(tender.dateEchehance) || '',
+            dateDebut: formatDateForInput(tender.dateDebut) || '',
+            dateEchehance: formatDateForInput(tender.dateEchehance) || '',
             wilaya: tender.wilaya || '',
             sectors: tender.sectors || '',
-            image: tender.image || '',
+            image: tender.imageUrl || '',
           });
   
           // Mise à jour de selectedSectors avec les secteurs du tender
@@ -135,8 +129,6 @@ const EditTenderForm = () => {
         console.error("Erreur lors de la récupération des secteurs", error);
       }
     };
-
-    
     fetchSectors();
   }, []
   );
@@ -154,14 +146,6 @@ const EditTenderForm = () => {
     });
   };
 
-  // Gestion de l'upload de l'image
-  const handleFileChange = (e) => {
-    setFormData({
-      ...formData,
-      image: e.target.files[0],
-    });
-  };
-
   const handleSectorChange = (e) => {
     const { value, checked } = e.target;
     if (checked) {
@@ -175,6 +159,35 @@ const EditTenderForm = () => {
       ...formData,
       sectors: checked ? [...selectedSectors, value] : selectedSectors.filter(id => id !== value)
     });
+  };
+
+  const [publicId, setPublicId] = useState("");
+
+  const cloudName = "dzugplucv"; // Replace with your Cloudinary cloud name
+  const uploadPreset = "asbpcfsk"; // Replace with your Cloudinary upload preset
+
+  const uwConfig = {
+    cloudName,
+    uploadPreset,
+    folder: "tenders",
+    multiple: false,  //restrict upload to a single file
+    clientAllowedFormats: ["jpg", "png", "pdf"],
+    maxImageFileSize: 20 * 1024 * 1024, // 20MB max file size
+    // cropping: true, //add a cropping step
+    // showAdvancedOptions: true,  //add advanced options (public_id and tag)
+    // sources: [ "local", "url"], // restrict the upload sources to URL and local files
+    // tags: ["users", "profile"], //add the given tags to the uploaded files
+    // context: {alt: "user_uploaded"}, //add the given context data to the uploaded files
+    // clientAllowedFormats: ["images"], //restrict uploading to image files only
+    // maxImageWidth: 2000, //Scales the image down to a width of 2000 pixels before uploading
+    // theme: "purple", //change to a purple theme
+  };
+
+  const handleImageUpload = (publicId) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      imageUrl: `https://res.cloudinary.com/${cloudName}/image/upload/${publicId}`,
+    }));
   };
 
   // Gestion de l'envoi du formulaire
@@ -198,8 +211,27 @@ const EditTenderForm = () => {
         navigate("/admin")
       }
     } catch (error) {
-      console.error("Erreur lors de l'ajout du tender:", error);
-      setMessage("Erreur lors de l'ajout du tender.");
+      if (error.response) { // Vérifie si error.response existe
+        if (error.response.status === 500) {
+          Swal.fire({
+            title: "Erreur !",
+            text: "Numéro ANEP déjà existant",
+            icon: "error",
+          });
+        } else {
+          Swal.fire({
+            title: "Erreur !",
+            text: error.response.data.message || "Une erreur s'est produite",
+            icon: "error",
+          });
+        }
+      } else {
+        Swal.fire({
+          title: "Erreur !",
+          text: error.message || "Une erreur inconnue s'est produite",
+          icon: "error",
+        });
+      }
     }
   };
 
@@ -316,15 +348,15 @@ const EditTenderForm = () => {
 
               {/* Wilaya */}
               <div className="mb-4">
-                <label className="text-gray-700 font-semibold">
+                <label className="text-gray-700 font-semibold dark:text-gray-300 ">
                   Wilaya
                 </label>
-                <div className="relative text-gray-300">
+                <div className="relative text-gray-300 ">
                   <select
                     name="wilaya"
                     value={formData.wilaya}
                     onChange={handleChange}
-                    className="block w-full bg-white dark:bg-gray-800  border border-black rounded-lg shadow-sm mt-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="block w-full bg-white dark:bg-gray-700 dark:text-white border border-black rounded-lg shadow-sm mt-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     required
                   >
                     <option value="" disabled>
@@ -363,13 +395,12 @@ const EditTenderForm = () => {
 
               {/* Image */}
               <div>
-                <label className="block text-gray-600 dark:text-gray-300 mb-2">Image (Ajouté une nouvelle sinon garder l'ancienne)</label>
-                <input
-                  type="file"
-                  name="image"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-300"
+
+                {/* Image */}
+                {/* Cloudinary Upload Widget */}
+                <CloudinaryUploadWidget
+                  uwConfig={uwConfig}
+                  setPublicId={handleImageUpload}
                 />
               </div>
 

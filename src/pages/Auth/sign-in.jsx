@@ -9,7 +9,7 @@ import Pattern from "../../assets/pattern.png";
 
 export function SignIn() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const [identifiant, setIdentifiant] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // pour gérer les erreurs
   const [recaptchaToken, setRecaptchaToken] = useState("");
@@ -23,7 +23,7 @@ export function SignIn() {
 
     try {
       const response = await axios.post("https://api.az-tenders.com/auth/login", {
-        email,
+        identifiant,
         password,
         recaptchaToken,
       });
@@ -96,17 +96,17 @@ export function SignIn() {
               color="blue-gray"
               className="-mb-3 font-bold"
             >
-              Votre email
+              Votre identifiant
             </typography>
             <Input
               size="lg"
-              placeholder="name@mail.com"
+              placeholder="name@mail.com ou 0799999999"
               className="!border-t-blue-gray-200 focus:!border-t-gray-900"
               labelProps={{
                 className: "before:content-none after:content-none",
               }}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={identifiant}
+              onChange={(e) => setIdentifiant(e.target.value)}
             />
             <typography
               component={"span"}
@@ -132,25 +132,6 @@ export function SignIn() {
           {error && (
             <div className="text-red-500 mb-4 mt-2 text-center">{error}</div> // Afficher les erreurs
           )}
-          {/* <Checkbox
-            label={
-              <typography
-                component={"span"}
-                variant="small"
-                color="gray"
-                className="flex items-center justify-start font-medium"
-              >
-                J'accepte les&nbsp;
-                <a
-                  href="#"
-                  className="font-normal text-black transition-colors hover:text-gray-900 underline"
-                >
-                  Terms and Conditions
-                </a>
-              </typography>
-            }
-            containerProps={{ className: "-ml-2.5" }}
-          /> */}
           <div className="mt-2 flex justify-center">
             <ReCAPTCHA
               sitekey="6Ld7i1UqAAAAAAC09bNVBMRaLqiRPP8Ggg_5rTrY"

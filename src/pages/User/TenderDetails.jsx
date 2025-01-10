@@ -4,15 +4,16 @@
 import axios from "axios";
 import { Badge } from "keep-react";
 import React, { useEffect, useState } from "react";
-import { FaMapMarker } from "react-icons/fa";
-import { FaFileCircleExclamation } from "react-icons/fa6";
+import { FaMapMarker, FaCalendarTimes } from "react-icons/fa";
+import { FaFileCircleExclamation, FaArrowLeft } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import FavoriteButton from "../../components/FavoritesComponent";
 import NavbarUser from "../../components/NavbarUser";
 const TenderDetails = () => {
   const { id } = useParams(); // Récupération de l'ID depuis les paramètres d'URL
-
+  const [isPDF, setIsPDF] = useState(false);
+  const [upload, setUpload] = useState(true);
   const [tender, setTender] = useState(null);
 
   useEffect(() => {
@@ -47,6 +48,28 @@ const TenderDetails = () => {
     fetchTenderDetails();
   }, [id]);
 
+  useEffect(() => {
+    const checkFileType = async () => {
+      if (tender && tender.imageUrl) {
+        try {
+          const rep = await fetch(tender.imageUrl, { method: "HEAD" });
+          if (rep.status === 200) {         
+          const fileType = rep.headers.get("content-type");
+          if (fileType.includes("pdf")) {
+            setIsPDF(true);
+          }
+        }else {
+          setUpload(false);
+        }
+        } catch (error) {
+          console.error("Erreur lors de la vérification du type de fichier :", error);
+        }
+      }
+    };
+  
+    checkFileType();
+  }, [tender]);
+
   const handleDownload = async (url, fileName) => {
     try {
       const response = await fetch(url);
@@ -68,14 +91,26 @@ const TenderDetails = () => {
     }
   };
 
+  const parseDateString = (dateString) => {
+    const [day, month, year] = dateString.split("-");
+    return new Date(`${year}-${month}-${day}`); // Format yyyy-mm-dd
+  };
+
   return (
     <div className="text-black dark:text-slate-100 min-h-screen dark:bg-darkColor">
       <NavbarUser />
       <h1 className="text-heading-4 m-5 text-center font-Poppins">
         Détail du Tender
       </h1>
+
+      <button
+        onClick={() => window.history.back()}
+        className="bg-green-700 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+       <span><FaArrowLeft /> Retour </span>
+      </button> 
       {tender ? (
-        <div className="w-full p-3 md:p-0 md:w-[700px]  mx-auto mt-4 font-Poppins">
+        <div className="w-full p-3 md:p-0 md:w-[900px]  mx-auto mt-4 font-Poppins">
           <div className="flex justify-between items-center">
             <div>
               <h2 className="text-lg md:text-2xl mr-4 font-bold inline">
@@ -115,14 +150,15 @@ const TenderDetails = () => {
             </p>
 
             <p
-              className={`${
-                new Date(tender.dateEchehance) < new Date()
-                  ? "text-red-500"
-                  : ""
-              }`}
+              className={`${tender.dateEchehance &&
+                parseDateString(tender.dateEchehance) < new Date()
+                ? "text-red-500"
+                : ""
+                }`}
             >
-              Date d'Echéance : {tender.dateEchehance}
-              {new Date(tender.dateEchehance) < new Date() && (
+              <FaCalendarTimes className="inline mr-1 text-greenLogo" />
+              {tender.dateEchehance}
+              {tender.dateEchehance && parseDateString(tender.dateEchehance) < new Date() && (
                 <span className="ml-1">(expiré)</span>
               )}
             </p>
@@ -140,7 +176,7 @@ const TenderDetails = () => {
               </span>
             </p>
           </div>
-          {tender.imageUrl ? (
+          {tender.imageUrl && upload ? (
             <button
               onClick={() => handleDownload(tender.imageUrl, tender.title)}
               className="bg-green-700 hover:bg-green-600 text-slate-100 py-2 px-4 w-full justify-center rounded inline-flex items-center"
@@ -157,17 +193,34 @@ const TenderDetails = () => {
           ) : (
             <button className="bg-gray-900 hover:bg-gray-800 text-slate-100 py-2 px-4 w-full justify-center rounded inline-flex items-center">
               <FaFileCircleExclamation className="inilne mr-1" />
-              Announce non renseignée
+              Annonce non renseignée
             </button>
           )}
+          <div className="pb-10">
 
-          {tender.imageUrl && (
-            <img
-              className="my-10 mx-auto"
-              src={tender.imageUrl}
-              alt="announce du tender"
-            />
-          )}
+            {tender.imageUrl && upload &&(
+              isPDF ? (
+                // <embed src={tender.imageUrl} type='application/pdf'       width="100%"
+                // height="500px"/>
+                <iframe
+                  className="my-10 mx-auto"
+                  src={tender.imageUrl}
+                  width="100%"
+                  height="900px"
+                  title="Document PDF"
+                />
+                // <object width="100%" height="400" className="mb-10" data={tender.imageUrl} type="application/pdf">   </object>
+                //  <Document file={tender.imageUrl} />  
+              ) : (
+                <img
+                  className="my-10 mx-auto"
+                  src={tender.imageUrl}
+                  alt="Annonce du tender"
+                />
+              )
+            )}
+          </div>
+
         </div>
       ) : (
         <p className="text-center">Chargement des détails du tender...</p>

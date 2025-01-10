@@ -53,9 +53,7 @@ const Offres = () => {
                 3
               </div>{" "}
               <div className="text-xs md:text-base">
-                Effectuer le paiement en choisissant l'une des deux méthodes :
-                <p className="">CCP : 0025264255223 Clé 25</p>
-                <p>BaridiMob : 777777995266553233333</p>
+              Effectuer le paiement avec votre compte CCP
               </div>
             </div>
             <div className="flex items-center mb-2">
@@ -73,7 +71,7 @@ const Offres = () => {
           </div>
         </div>
       </section>
-      <footer className="bg-gray-900 mt-40 font-Poppins text-center md:text-right w-full">
+      <footer className="bg-gray-900 font-Poppins text-center md:text-right">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex  md:justify-between">
             <div className="mb-6 md:mb-0">
@@ -88,29 +86,64 @@ const Offres = () => {
                 </span>
               </a>
             </div>
-            <div className="">
-              <ul className="flex mt-4 space-x-4">
-                {/* Facebook */}
-                <li className=" h-10 w-10 flex items-center justify-center shrink-0">
-                  <a href="#">
-                    <FaFacebookSquare size={30} color="#40CB56" />
+            <div>
+          <a
+                    href="tel:+213791752266"
+                    className="text-[#40CB56] text-sm ml-4 text-white"
+                  >
+                    <small className="block">Télephone</small>
+                    <strong>+213 791 75 22 66</strong>
                   </a>
-                </li>
-
-                {/* LinkedIn */}
-                <li className=" h-10 w-10 flex items-center justify-center shrink-0">
-                  <a href="#">
-                    <FaLinkedin size={30} color="#40CB56" />
+            </div>
+            <div>
+            <a
+                    href="mailto:info@example.com"
+                    className="text-[#40CB56] text-sm ml-4 text-white"
+                  >
+                    <small className="block">Email</small>
+                    <strong>contact@az-tenders.com</strong>
                   </a>
-                </li>
-
-                {/* Instagram */}
-                <li className=" h-10 w-10  flex items-center justify-center shrink-0 overflow-hidden">
-                  <a href="#">
-                    <FaInstagramSquare size={30} color="#40CB56" />
-                  </a>
-                </li>
-              </ul>
+            </div>
+          </div>
+          
+          <div>
+            <div className="md:flex md:justify-around md:items-center">
+              <div className="mt-5">
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="">
+                    <a href="#Slider" className="hover:underline">
+                      Présentation
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-5">
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="">
+                    <a href="#About Us" className="hover:underline">
+                      A propos
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-5">
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="">
+                    <a href="#Offres" className="hover:underline">
+                      Offres
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="mt-5">
+                <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <li className="">
+                    <a href="#Contact" className="hover:underline">
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
 
@@ -126,23 +159,17 @@ const Offres = () => {
             <div className="flex mt-4 justify-center items-center mt-0">
               {/* Facebook */}
               <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
+                href="https://www.facebook.com/profile.php?id=61563836030318"
+                className="text-gray-500 hover:text-white 
+ dark:hover:text-white"
               >
                 <FaFacebookSquare className="w-4 h-4" />
                 <span className="sr-only">Facebook page</span>
               </a>
-              {/* Twitter */}
               <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
-              >
-                <BsTwitterX className="w-4 h-4" />
-                <span className="sr-only">Twitter page</span>
-              </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                href="https://www.instagram.com/ayweb_officiel?igsh=cXV4MWduZmwwZ2Ny"
+                className="text-gray-500 hover:text-white 
+ dark:hover:text-white ms-5"
               >
                 <FaInstagramSquare className="w-4 h-4" />
                 <span className="sr-only">Instagram page</span>
@@ -151,7 +178,8 @@ const Offres = () => {
               {/* LinkedIn */}
               <a
                 href="#"
-                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+                className="text-gray-500 hover:text-white 
+ dark:hover:text-white ms-5"
               >
                 <FaLinkedin className="w-4 h-4" />
                 <span className="sr-only">LinkedIn page</span>
